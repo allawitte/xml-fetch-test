@@ -14,11 +14,11 @@ app.post('/xmlhttp/', function (req, response) {
 
 app.post('/fetch/', function (req, response) {
     console.log(req.body);
-    response.send('hello fetch');
+    response.json('hello fetch');
 });
 app.post('/formdata/', function (req, response) {
     console.log(req.body);
-    response.send('hello fetch');
+    response.json('hello formdata');
 });
 
 app.listen(8888);
