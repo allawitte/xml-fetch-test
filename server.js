@@ -1,0 +1,33 @@
+var express = require("express");
+var app = express();
+var path = require("path");
+var bodyParser = require('body-parser');
+
+app.use(express.static(__dirname + '/public'));
+app.use(require('body-parser').urlencoded({extended: true}));
+app.use(bodyParser.json());
+
+app.post('/xmlhttp/', function (req, response) {
+    console.log(req.body);
+    response.send('hello xmlhttp');
+});
+
+app.post('/fetch/', function (req, response) {
+    console.log(req.body);
+    response.send('hello fetch');
+});
+app.post('/formdata/', function (req, response) {
+    console.log(req.body);
+    response.send('hello fetch');
+});
+
+app.listen(8888);
+console.log("Running at Port 8888");
+
+
+/**
+ * Created by Alla on 8/29/2017.
+ */
+/**
+ * Created by Alla on 9/13/2017.
+ */
