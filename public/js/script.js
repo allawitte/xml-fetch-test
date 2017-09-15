@@ -8,7 +8,9 @@ const xmlBtn = document.querySelector('#xml');
 const fetchBtn = document.querySelector('#fetch');
 const formBtn = document.querySelector('#form-data');
 const myHeaders = new Headers();
+const fdHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
+fdHeaders.append("Content-Type", "multipart/form-data");
 
 xmlBtn.addEventListener('click', xmlSend);
 fetchBtn.addEventListener('click', fetchSend);
@@ -27,7 +29,7 @@ function fetchSend(){
     let fetchData = {
         method: 'POST',
         headers: myHeaders,
-        body: form
+        body: JSON.stringify(form)
     };
     fetch('/fetch/', fetchData)
         .then((response) =>{
@@ -38,8 +40,7 @@ function fetchSend(){
 function dataFormSend(){
     let fetchData = {
         method: 'POST',
-        headers: myHeaders,
-        body: JSON.stringify(formData)
+        body: formData
     };
     fetch('/formdata/', fetchData)
         .then((response) =>{

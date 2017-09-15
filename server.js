@@ -2,10 +2,12 @@ var express = require("express");
 var app = express();
 var path = require("path");
 var bodyParser = require('body-parser');
+var multer = require('multer');
+var upload = multer();
 
 app.use(express.static(__dirname + '/public'));
-app.use(require('body-parser').urlencoded({extended: true}));
-app.use(bodyParser.json());
+//app.use(require('body-parser').urlencoded({extended: true}));
+//app.use(bodyParser.json());
 
 app.post('/xmlhttp/', function (req, response) {
     console.log(req.body);
@@ -16,7 +18,7 @@ app.post('/fetch/', function (req, response) {
     console.log(req.body);
     response.json('hello fetch');
 });
-app.post('/formdata/', function (req, response) {
+app.post('/formdata/', upload.fields([]), function (req, response) {
     console.log(req.body);
     response.json('hello formdata');
 });
